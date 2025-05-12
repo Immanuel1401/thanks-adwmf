@@ -1,0 +1,208 @@
+<head>
+  <meta charset="UTF-8">
+  <title>THANKS FOR ADWMF</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: url("DSC07672.JPG") no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: black;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.85);
+      padding: 40px;
+      border-radius: 20px;
+      display: inline-block;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: all 0.5s ease;
+      max-width: 700px;
+    }
+
+    #start-btn, #back-btn {
+      margin-top: 30px;
+      padding: 15px 25px;
+      font-size: 16px;
+      background-color: #ffcc00;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    select {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+
+    .chatbox {
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    .bubble {
+      background-color: #f0f0f0;
+      padding: 15px;
+      border-radius: 15px;
+      margin: 10px 0;
+      display: inline-block;
+      max-width: 90%;
+    }
+
+    .cc .bubble { background-color: #ffe0f0; }
+    .pr .bubble { background-color: #e0f7ff; }
+    .eq .bubble { background-color: #e0ffe0; }
+    .hrd .bubble { background-color: #fffbe0; }
+    .ct .bubble { background-color: #f5e0ff; }
+    .bpi .bubble { background-color: #e0e0ff; }
+    .vol .bubble { background-color: #ffdfe0; }
+  </style>
+</head>
+<body>
+
+  <div class="card animate__animated animate__fadeInDown" id="main-card">
+    <h1 id="title">Halo Swayanakers</h1>
+    <p id="line1">Aku Mau ngucapin terimakasih kepada semua divisi yang udah bantu acara ini</p>
+    <p id="line2">Tetap semangat semuanya, meski emang capek banget</p>
+    <p id="line3">Ini aku ada ucapan untuk kalian</p>
+    <button id="start-btn">Mulai</button>
+
+    <div id="dropdown-section" style="display:none">
+      <p>Pilih Divisimu rek:</p>
+      <select id="page-select">
+        <option value="">-- Pilih Divisi --</option>
+        <option value="cc">🎨 Creative Campaign</option>
+        <option value="pr">📢 Public Relation</option>
+        <option value="eq">📦 Equipment</option>
+        <option value="hrd">👥 HRD</option>
+        <option value="ct">📸 Creative Team</option>
+        <option value="bpi">🌟 BPI</option>
+        <option value="vol">🙌 Volunteer</option>
+      </select>
+    </div>
+
+    <div class="chatbox animate__animated animate__fadeIn" id="chatbox" style="display:none"></div>
+  </div>
+
+  <audio id="bg-music" autoplay loop>
+    <source src="acoustic-nature-mellow-moments-337865.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const music = document.getElementById("bg-music");
+    const startBtn = document.getElementById("start-btn");
+    const title = document.getElementById("title");
+    const line1 = document.getElementById("line1");
+    const line2 = document.getElementById("line2");
+    const line3 = document.getElementById("line3");
+    const dropdownSection = document.getElementById("dropdown-section");
+    const pageSelect = document.getElementById("page-select");
+    const chatbox = document.getElementById("chatbox");
+
+    const data = {
+      cc: {
+        class: "cc",
+        messages: [
+          "Terimakasihh untuk Tim CC udah mau bantu dari awal hingga akhir acara",
+          "Udah mau bantu bikin konsep acaranya biar semenarik mungkin",
+          "Di Hari H juga kalian udah mau koordinir setiap pos dan tanggap dalam situasi dadakan",
+          "100 UNTUK KALIAN SEMUA ❤️"
+        ]
+      },
+      pr: {
+        class: "pr",
+        messages: [
+          "Terimakasih untuk semua tim PR sudah membantu terlaksananya acara ini",
+          "Anak-anak dari Rumah Singgah dan Komunitas Rangkahnya juga asikk banget",
+          "Komunikasi dengan BEM FK berjalan lancar juga berkat kalian",
+          "GOOD JOB 👍"
+        ]
+      },
+      eq: {
+        class: "eq",
+        messages: [
+          "Makasih banget untuk divisi angkat-angkat ini wkwkwk",
+          "Maaf juga jika ada order dadakan di h-1 dan orderan yang buanyak itu",
+          "Udah ngondusifin acara ini juga dan berjalan lancar",
+          "POIN PLUS UNTUK KALIAN ⭐"
+        ]
+      },
+      hrd: {
+        class: "hrd",
+        messages: [
+          "Thanks to HRD udah mau mimpin perjalanan kita",
+          "Udah ngerangkap juga jadi PK dan nemenin anak-anaknya",
+          "Acara tanpa pengawasan kalian mungkin tidak akan berjalan lancar gess",
+          "LOVVV UNTUK KALIAN ❤️"
+        ]
+      },
+      ct: {
+        class: "ct",
+        messages: [
+          "Makasihh untuk CT atas semua hal yang udah disiapin",
+          "Foto dan videonya lucu-lucu nih jadi guemesss",
+          "Udah waktunya hibernasi di long weekend ini",
+          "TOPP BUAT KALIAN ⭐"
+        ]
+      },
+      bpi: {
+        class: "bpi",
+        messages: [
+          "Terimakasih untuk semua anggota inti Swayanaka",
+          "Atas arahan dan sarannya hingga acara ini berjalan lancar",
+          "Di Hari H juga sangat membantu untuk semua tugas kami",
+          "ASEK ASEK JOS 💃"
+        ]
+      },
+      vol: {
+        class: "vol",
+        messages: [
+          "Terimakasih untuk volunteer dari semua divisi",
+          "Udah siap jadi PK dan Mastergame juga sigap dikalah hujan",
+          "Kalian asik poll sama anak-anaknya dan bisa membaur sama mereka",
+          "SERUU PWOLL ❤️"
+        ]
+      }
+    };
+
+    startBtn.addEventListener("click", () => {
+      music.play().catch(e => console.log("Autoplay blocked:" + e));
+      startBtn.style.display = "none";
+
+      title.textContent = "Selamat Menikmati!";
+      line1.textContent = "Semoga lantunan nada ini menemani hari-hari mu.";
+      line2.textContent = "Terima kasih telah menjadi bagian berharga 💛";
+      line3.textContent = "";
+
+      dropdownSection.style.display = "block";
+    });
+
+    pageSelect.addEventListener("change", function () {
+      const val = this.value;
+      if (val && data[val]) {
+        const { messages, class: className } = data[val];
+        chatbox.innerHTML = "";
+        chatbox.className = `chatbox ${className}`;
+
+        messages.forEach(msg => {
+          const div = document.createElement("div");
+          div.className = "bubble animate__animated animate__fadeInUp";
+          div.textContent = msg;
+          chatbox.appendChild(div);
+        });
+
+        chatbox.style.display = "block";
+      } else {
+        chatbox.style.display = "none";
+      }
+    });
+  </script>
+
+</body>
+</html>
